@@ -1,0 +1,60 @@
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Additional global styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--chakra-colors-gray-100);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--chakra-colors-gray-800);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--chakra-colors-brand-500);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--chakra-colors-brand-600);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--chakra-colors-brand-400);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--chakra-colors-brand-300);
+}
+
+/* Helper classes */
+.text-gradient {
+  background: linear-gradient(45deg, #2C7A7B, #38B2AC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.card-hover {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+} 
