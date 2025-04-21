@@ -1,6 +1,6 @@
-import { 
-  // Removing unused icon imports
-} from 'react-icons/fa';
+import { FaSeedling, FaLeaf, FaFire, FaHeart, FaBrain } from 'react-icons/fa';
+import { MdFreeBreakfast, MdLunchDining, MdDinnerDining } from 'react-icons/md';
+import { getPlaceholderImage, getUnsplashImageForCategory } from '../utils/imageUtils';
 
 /**
  * Recipe data model
@@ -23,278 +23,206 @@ import {
 
 export const recipes = [
   {
-    id: 'mediterranean-salad',
-    title: 'Mediterranean Quinoa Salad',
-    description: 'A refreshing Mediterranean-inspired salad with protein-rich quinoa, fresh vegetables, and feta cheese.',
-    image: '/images/recipes/mediterranean-salad.jpg',
+    id: '1',
+    title: 'Mediterranean Quinoa Bowl',
+    description: 'A nutritious bowl packed with Mediterranean flavors, perfect for a balanced meal.',
+    image: getUnsplashImageForCategory('mediterranean', 'food', 800, 600),
     prepTime: 15,
-    cookTime: 15,
-    servings: 4,
-    difficulty: 'Easy',
-    mealType: 'Lunch',
-    dietaryPreferences: ['Vegetarian', 'Gluten-Free'],
-    tags: ['Healthy', 'High-Protein', 'Mediterranean'],
+    cookTime: 20,
+    servings: 2,
+    difficulty: 'easy',
+    mealType: 'lunch',
+    dietaryPreferences: ['vegetarian', 'gluten-free'],
+    tags: ['high-protein', 'heart-healthy', 'anti-inflammatory'],
     ingredients: [
-      { name: 'Quinoa', amount: '1 cup', notes: 'rinsed and drained' },
-      { name: 'Water', amount: '2 cups' },
-      { name: 'Cherry tomatoes', amount: '1 cup', notes: 'halved' },
-      { name: 'Cucumber', amount: '1 medium', notes: 'diced' },
-      { name: 'Red bell pepper', amount: '1', notes: 'diced' },
-      { name: 'Red onion', amount: '1/4 cup', notes: 'finely chopped' },
-      { name: 'Kalamata olives', amount: '1/3 cup', notes: 'pitted and halved' },
-      { name: 'Feta cheese', amount: '1/2 cup', notes: 'crumbled' },
-      { name: 'Fresh parsley', amount: '1/4 cup', notes: 'chopped' },
-      { name: 'Extra virgin olive oil', amount: '1/4 cup' },
-      { name: 'Lemon juice', amount: '2 tablespoons', notes: 'freshly squeezed' },
-      { name: 'Garlic', amount: '1 clove', notes: 'minced' },
-      { name: 'Dried oregano', amount: '1 teaspoon' },
-      { name: 'Salt', amount: '1/2 teaspoon' },
-      { name: 'Black pepper', amount: '1/4 teaspoon', notes: 'freshly ground' }
+      { amount: '1', name: 'quinoa', unit: 'cup' },
+      { amount: '2', name: 'water', unit: 'cups' },
+      { amount: '1', name: 'cucumber', unit: 'medium' },
+      { amount: '1', name: 'tomato', unit: 'large' },
+      { amount: '1/2', name: 'red onion', unit: 'medium' },
+      { amount: '1/4', name: 'kalamata olives', unit: 'cup' },
+      { amount: '1/4', name: 'feta cheese', unit: 'cup' },
+      { amount: '2', name: 'olive oil', unit: 'tablespoons' },
+      { amount: '1', name: 'lemon juice', unit: 'tablespoon' },
+      { amount: '1', name: 'fresh parsley', unit: 'tablespoon' },
+      { amount: '1/2', name: 'salt', unit: 'teaspoon' },
+      { amount: '1/4', name: 'black pepper', unit: 'teaspoon' }
     ],
     instructions: [
-      'In a medium saucepan, combine quinoa and water. Bring to a boil, then reduce heat to low, cover, and simmer for 15 minutes until water is absorbed.',
-      'Remove from heat and let stand for 5 minutes, then fluff with a fork and let cool to room temperature.',
-      'In a large bowl, combine the cooled quinoa, cherry tomatoes, cucumber, bell pepper, red onion, olives, feta cheese, and parsley.',
-      'In a small bowl, whisk together olive oil, lemon juice, garlic, oregano, salt, and pepper.',
-      'Pour the dressing over the salad and toss to combine.',
-      'Serve immediately or refrigerate for up to 3 days.'
+      'Rinse quinoa thoroughly.',
+      'In a medium saucepan, bring quinoa and water to a boil.',
+      'Reduce heat, cover, and simmer for 15 minutes or until water is absorbed.',
+      'Dice cucumber, tomato, and red onion.',
+      'In a large bowl, combine cooked quinoa with all vegetables, olives, and feta cheese.',
+      'Whisk together olive oil, lemon juice, parsley, salt, and pepper.',
+      'Pour dressing over the salad and toss to combine.',
+      'Serve at room temperature or chilled.'
+    ],
+    nutritionInfo: {
+      calories: 380,
+      protein: 12,
+      carbs: 45,
+      fat: 18,
+      fiber: 7,
+      sugar: 4
+    }
+  },
+  {
+    id: '2',
+    title: 'Berry Protein Smoothie',
+    description: 'A delicious protein-packed smoothie to fuel your day.',
+    image: getUnsplashImageForCategory('smoothie', 'food', 800, 600),
+    prepTime: 5,
+    cookTime: 0,
+    servings: 1,
+    difficulty: 'easy',
+    mealType: 'breakfast',
+    dietaryPreferences: ['vegetarian', 'gluten-free'],
+    tags: ['high-protein', 'quick', 'brain-food'],
+    ingredients: [
+      { amount: '1', name: 'banana', unit: 'medium' },
+      { amount: '1', name: 'mixed berries', unit: 'cup' },
+      { amount: '1', name: 'protein powder', unit: 'scoop' },
+      { amount: '1', name: 'Greek yogurt', unit: 'cup' },
+      { amount: '1', name: 'almond milk', unit: 'cup' },
+      { amount: '1', name: 'honey', unit: 'tablespoon' },
+      { amount: '1', name: 'chia seeds', unit: 'tablespoon' }
+    ],
+    instructions: [
+      'Add all ingredients to a blender.',
+      'Blend until smooth and creamy.',
+      'Pour into a glass and enjoy immediately.'
     ],
     nutritionInfo: {
       calories: 320,
-      protein: 9,
-      carbs: 32,
-      fat: 18,
-      fiber: 5,
+      protein: 25,
+      carbs: 40,
+      fat: 8,
+      fiber: 8,
+      sugar: 25
+    }
+  },
+  {
+    id: '3',
+    title: 'Grilled Salmon with Avocado Salsa',
+    description: 'Heart-healthy salmon topped with fresh avocado salsa.',
+    image: getUnsplashImageForCategory('salmon', 'food', 800, 600),
+    prepTime: 15,
+    cookTime: 15,
+    servings: 2,
+    difficulty: 'medium',
+    mealType: 'dinner',
+    dietaryPreferences: ['gluten-free', 'dairy-free', 'paleo'],
+    tags: ['high-protein', 'heart-healthy', 'omega-3'],
+    ingredients: [
+      { amount: '2', name: 'salmon fillets', unit: '6oz each' },
+      { amount: '1', name: 'avocado', unit: 'ripe' },
+      { amount: '1/2', name: 'red onion', unit: 'small' },
+      { amount: '1', name: 'lime', unit: 'whole' },
+      { amount: '1', name: 'tomato', unit: 'medium' },
+      { amount: '1', name: 'cilantro', unit: 'tablespoon' },
+      { amount: '2', name: 'olive oil', unit: 'tablespoons' },
+      { amount: '1', name: 'salt', unit: 'teaspoon' },
+      { amount: '1/2', name: 'black pepper', unit: 'teaspoon' }
+    ],
+    instructions: [
+      'Preheat grill to medium-high heat.',
+      'Rub salmon with 1 tablespoon olive oil, salt, and pepper.',
+      'Grill salmon for 4-5 minutes per side until cooked through.',
+      'Dice avocado, tomato, and red onion.',
+      'Combine diced ingredients with lime juice, remaining olive oil, and cilantro.',
+      'Season salsa with salt and pepper to taste.',
+      'Serve grilled salmon topped with avocado salsa.'
+    ],
+    nutritionInfo: {
+      calories: 420,
+      protein: 35,
+      carbs: 12,
+      fat: 25,
+      fiber: 6,
       sugar: 3
     }
   },
   {
-    id: 'chicken-stir-fry',
-    title: 'Quick Chicken Stir-Fry',
-    description: 'A colorful and flavorful chicken stir-fry that comes together in minutes for a healthy weeknight dinner.',
-    image: '/images/recipes/chicken-stir-fry.jpg',
-    prepTime: 15,
-    cookTime: 10,
-    servings: 4,
-    difficulty: 'Medium',
-    mealType: 'Dinner',
-    dietaryPreferences: ['Dairy-Free'],
-    tags: ['Quick', 'High-Protein', 'Asian-Inspired'],
+    id: '4',
+    title: 'Overnight Oats with Chia Seeds',
+    description: 'A time-saving breakfast that you can prepare the night before.',
+    image: getUnsplashImageForCategory('oats', 'food', 800, 600),
+    prepTime: 10,
+    cookTime: 0,
+    servings: 1,
+    difficulty: 'easy',
+    mealType: 'breakfast',
+    dietaryPreferences: ['vegetarian', 'gluten-free'],
+    tags: ['high-fiber', 'meal-prep', 'energy-boost'],
     ingredients: [
-      { name: 'Boneless, skinless chicken breasts', amount: '1 pound', notes: 'cut into bite-sized pieces' },
-      { name: 'Broccoli florets', amount: '2 cups' },
-      { name: 'Red bell pepper', amount: '1', notes: 'sliced' },
-      { name: 'Carrots', amount: '2 medium', notes: 'thinly sliced' },
-      { name: 'Snow peas', amount: '1 cup' },
-      { name: 'Garlic', amount: '3 cloves', notes: 'minced' },
-      { name: 'Fresh ginger', amount: '1 tablespoon', notes: 'grated' },
-      { name: 'Vegetable oil', amount: '2 tablespoons' },
-      { name: 'Low-sodium soy sauce', amount: '3 tablespoons' },
-      { name: 'Honey', amount: '1 tablespoon' },
-      { name: 'Cornstarch', amount: '1 teaspoon' },
-      { name: 'Sesame oil', amount: '1 teaspoon' },
-      { name: 'Red pepper flakes', amount: '1/4 teaspoon', notes: 'optional' },
-      { name: 'Green onions', amount: '2', notes: 'sliced, for garnish' },
-      { name: 'Sesame seeds', amount: '1 tablespoon', notes: 'for garnish' }
+      { amount: '1/2', name: 'rolled oats', unit: 'cup' },
+      { amount: '1', name: 'almond milk', unit: 'cup' },
+      { amount: '1', name: 'chia seeds', unit: 'tablespoon' },
+      { amount: '1', name: 'maple syrup', unit: 'tablespoon' },
+      { amount: '1/2', name: 'cinnamon', unit: 'teaspoon' },
+      { amount: '1/2', name: 'banana', unit: 'sliced' },
+      { amount: '2', name: 'berries', unit: 'tablespoons' },
+      { amount: '1', name: 'almond butter', unit: 'tablespoon' }
     ],
     instructions: [
-      'In a small bowl, whisk together soy sauce, honey, cornstarch, sesame oil, and red pepper flakes (if using). Set aside.',
-      'Heat 1 tablespoon of vegetable oil in a large wok or skillet over high heat. Add chicken and cook for 4-5 minutes until browned and cooked through. Remove from pan and set aside.',
-      'Add the remaining 1 tablespoon of oil to the pan. Add garlic and ginger, stir for 30 seconds until fragrant.',
-      'Add broccoli, bell pepper, and carrots to the pan. Stir-fry for 3-4 minutes.',
-      'Add snow peas and cook for an additional 1-2 minutes until vegetables are crisp-tender.',
-      'Return chicken to the pan. Pour in the sauce and toss everything together for 1-2 minutes until the sauce thickens and coats everything.',
-      'Garnish with green onions and sesame seeds before serving.',
-      'Serve hot with rice or noodles if desired.'
+      'In a jar or container, combine oats, almond milk, chia seeds, maple syrup, and cinnamon.',
+      'Stir well, then cover and refrigerate overnight.',
+      'In the morning, top with sliced banana, berries, and almond butter.',
+      'Enjoy cold or warm in the microwave if preferred.'
     ],
     nutritionInfo: {
-      calories: 290,
-      protein: 35,
-      carbs: 15,
-      fat: 11,
-      fiber: 4,
-      sugar: 7
+      calories: 350,
+      protein: 10,
+      carbs: 50,
+      fat: 14,
+      fiber: 11,
+      sugar: 15
     }
   },
   {
-    id: 'blueberry-pancakes',
-    title: 'Fluffy Blueberry Pancakes',
-    description: 'Light and fluffy pancakes studded with juicy blueberries, perfect for a weekend breakfast.',
-    image: '/images/recipes/blueberry-pancakes.jpg',
-    prepTime: 10,
-    cookTime: 15,
+    id: '5',
+    title: 'Turmeric Anti-Inflammatory Soup',
+    description: 'A warming soup with powerful anti-inflammatory properties.',
+    image: getUnsplashImageForCategory('soup', 'food', 800, 600),
+    prepTime: 15,
+    cookTime: 30,
     servings: 4,
-    difficulty: 'Easy',
-    mealType: 'Breakfast',
-    dietaryPreferences: ['Vegetarian'],
-    tags: ['Sweet', 'Weekend', 'Family-Friendly'],
+    difficulty: 'medium',
+    mealType: 'dinner',
+    dietaryPreferences: ['vegan', 'gluten-free', 'dairy-free'],
+    tags: ['anti-inflammatory', 'immune-boosting', 'detox'],
     ingredients: [
-      { name: 'All-purpose flour', amount: '1 1/2 cups' },
-      { name: 'Baking powder', amount: '1 tablespoon' },
-      { name: 'Salt', amount: '1/4 teaspoon' },
-      { name: 'Sugar', amount: '2 tablespoons' },
-      { name: 'Eggs', amount: '2', notes: 'beaten' },
-      { name: 'Milk', amount: '1 1/4 cups' },
-      { name: 'Unsalted butter', amount: '3 tablespoons', notes: 'melted, plus more for griddle' },
-      { name: 'Vanilla extract', amount: '1 teaspoon' },
-      { name: 'Fresh blueberries', amount: '1 cup' },
-      { name: 'Maple syrup', amount: 'For serving' }
+      { amount: '1', name: 'onion', unit: 'medium' },
+      { amount: '3', name: 'garlic cloves', unit: 'minced' },
+      { amount: '1', name: 'ginger', unit: 'tablespoon' },
+      { amount: '1', name: 'turmeric', unit: 'tablespoon' },
+      { amount: '1', name: 'carrots', unit: 'cup' },
+      { amount: '1', name: 'sweet potato', unit: 'medium' },
+      { amount: '1', name: 'vegetable broth', unit: 'quart' },
+      { amount: '1', name: 'coconut milk', unit: 'can' },
+      { amount: '1', name: 'kale', unit: 'cup' },
+      { amount: '2', name: 'olive oil', unit: 'tablespoons' },
+      { amount: '1', name: 'black pepper', unit: 'teaspoon' },
+      { amount: '1', name: 'salt', unit: 'teaspoon' }
     ],
     instructions: [
-      'In a large bowl, whisk together flour, baking powder, salt, and sugar.',
-      'In a separate bowl, whisk together eggs, milk, melted butter, and vanilla.',
-      'Pour the wet ingredients into the dry ingredients and stir until just combined. The batter should be slightly lumpy.',
-      'Gently fold in the blueberries.',
-      'Heat a griddle or large skillet over medium heat. Add a small amount of butter to coat.',
-      'For each pancake, pour about 1/4 cup of batter onto the griddle. Cook until bubbles form on the surface and the edges look set, about 2-3 minutes.',
-      'Flip the pancakes and cook for another 1-2 minutes until golden brown on the bottom.',
-      'Serve warm with maple syrup and additional blueberries if desired.'
+      'Heat olive oil in a large pot over medium heat.',
+      'Sauté onion, garlic, and ginger until fragrant.',
+      'Add turmeric and stir for 30 seconds.',
+      'Add diced carrots and sweet potato, cook for 5 minutes.',
+      'Pour in vegetable broth, bring to a boil, then reduce to a simmer.',
+      'Cook until vegetables are tender, about 20 minutes.',
+      'Stir in coconut milk and kale, simmer for 5 more minutes.',
+      'Season with salt and pepper. Blend if desired for a smoother texture.'
     ],
     nutritionInfo: {
       calories: 280,
-      protein: 8,
-      carbs: 42,
-      fat: 9,
-      fiber: 2,
-      sugar: 13
-    }
-  },
-  {
-    id: 'vegetable-curry',
-    title: 'Vegan Vegetable Curry',
-    description: 'A hearty and flavorful vegetable curry packed with nutrients and warming spices.',
-    image: '/images/recipes/vegetable-curry.jpg',
-    prepTime: 20,
-    cookTime: 30,
-    servings: 6,
-    difficulty: 'Medium',
-    mealType: 'Dinner',
-    dietaryPreferences: ['Vegan', 'Gluten-Free', 'Dairy-Free'],
-    tags: ['Hearty', 'Spicy', 'Indian-Inspired'],
-    ingredients: [
-      { name: 'Coconut oil', amount: '2 tablespoons' },
-      { name: 'Onion', amount: '1 large', notes: 'diced' },
-      { name: 'Garlic', amount: '4 cloves', notes: 'minced' },
-      { name: 'Fresh ginger', amount: '1 tablespoon', notes: 'grated' },
-      { name: 'Curry powder', amount: '2 tablespoons' },
-      { name: 'Ground cumin', amount: '1 teaspoon' },
-      { name: 'Ground turmeric', amount: '1 teaspoon' },
-      { name: 'Garam masala', amount: '1 teaspoon' },
-      { name: 'Red chili flakes', amount: '1/4 teaspoon', notes: 'optional, to taste' },
-      { name: 'Sweet potatoes', amount: '2 medium', notes: 'peeled and cubed' },
-      { name: 'Cauliflower', amount: '1 head', notes: 'broken into florets' },
-      { name: 'Red bell pepper', amount: '1', notes: 'diced' },
-      { name: 'Chickpeas', amount: '1 15oz can', notes: 'drained and rinsed' },
-      { name: 'Diced tomatoes', amount: '1 14oz can' },
-      { name: 'Coconut milk', amount: '1 14oz can', notes: 'full-fat' },
-      { name: 'Vegetable broth', amount: '1 cup' },
-      { name: 'Salt', amount: 'to taste' },
-      { name: 'Black pepper', amount: 'to taste' },
-      { name: 'Fresh cilantro', amount: '1/4 cup', notes: 'chopped, for garnish' },
-      { name: 'Lime wedges', amount: 'for serving' }
-    ],
-    instructions: [
-      'Heat coconut oil in a large pot over medium heat. Add onion and sauté for 3-4 minutes until softened.',
-      'Add garlic and ginger, cook for another minute until fragrant.',
-      'Stir in curry powder, cumin, turmeric, garam masala, and red chili flakes (if using). Cook for 30 seconds to toast the spices.',
-      'Add sweet potatoes, cauliflower, and bell pepper. Stir to coat with the spices.',
-      'Add chickpeas, diced tomatoes with their juice, coconut milk, and vegetable broth. Stir to combine.',
-      'Bring to a simmer, then reduce heat to low. Cover and cook for 20-25 minutes, stirring occasionally, until the vegetables are tender.',
-      'Season with salt and pepper to taste.',
-      'Serve hot over rice, garnished with fresh cilantro and lime wedges on the side.'
-    ],
-    nutritionInfo: {
-      calories: 310,
-      protein: 8,
-      carbs: 33,
+      protein: 5,
+      carbs: 30,
       fat: 18,
-      fiber: 9,
+      fiber: 6,
       sugar: 8
-    }
-  },
-  {
-    id: 'chocolate-avocado-mousse',
-    title: 'Chocolate Avocado Mousse',
-    description: 'A rich and creamy chocolate mousse made with avocados for a healthier dessert option.',
-    image: '/images/recipes/chocolate-avocado-mousse.jpg',
-    prepTime: 15,
-    cookTime: 0,
-    servings: 4,
-    difficulty: 'Easy',
-    mealType: 'Dessert',
-    dietaryPreferences: ['Vegan', 'Gluten-Free', 'Dairy-Free'],
-    tags: ['Healthy Dessert', 'No-Bake', 'Quick'],
-    ingredients: [
-      { name: 'Ripe avocados', amount: '2 large' },
-      { name: 'Unsweetened cocoa powder', amount: '1/2 cup' },
-      { name: 'Maple syrup', amount: '1/3 cup', notes: 'or to taste' },
-      { name: 'Almond milk', amount: '1/4 cup', notes: 'unsweetened' },
-      { name: 'Vanilla extract', amount: '1 teaspoon' },
-      { name: 'Salt', amount: '1/8 teaspoon' },
-      { name: 'Dark chocolate chips', amount: '2 tablespoons', notes: 'melted, plus more for garnish' },
-      { name: 'Fresh berries', amount: 'For garnish', notes: 'optional' },
-      { name: 'Mint leaves', amount: 'For garnish', notes: 'optional' }
-    ],
-    instructions: [
-      'Cut avocados in half, remove the pits, and scoop the flesh into a food processor or blender.',
-      'Add cocoa powder, maple syrup, almond milk, vanilla extract, salt, and melted chocolate to the food processor.',
-      'Blend until smooth and creamy, stopping to scrape down the sides as needed.',
-      'Taste and adjust sweetness if necessary by adding more maple syrup.',
-      'Spoon the mousse into four serving glasses or bowls.',
-      'Refrigerate for at least 30 minutes to set and chill.',
-      'Before serving, garnish with additional dark chocolate shavings, fresh berries, and mint leaves if desired.'
-    ],
-    nutritionInfo: {
-      calories: 240,
-      protein: 4,
-      carbs: 27,
-      fat: 15,
-      fiber: 9,
-      sugar: 14
-    }
-  },
-  {
-    id: 'honey-garlic-salmon',
-    title: 'Honey Garlic Glazed Salmon',
-    description: 'Perfectly seared salmon fillets brushed with a sweet and savory honey garlic glaze, ready in under 30 minutes.',
-    image: '/images/recipes/honey-garlic-salmon.jpg',
-    prepTime: 10,
-    cookTime: 15,
-    servings: 4,
-    difficulty: 'Medium',
-    mealType: 'Dinner',
-    dietaryPreferences: ['Gluten-Free', 'Dairy-Free'],
-    tags: ['High-Protein', 'Omega-3', 'Quick', 'Seafood'],
-    ingredients: [
-      { name: 'Salmon fillets', amount: '4 (6 oz each)', notes: 'skin-on' },
-      { name: 'Salt', amount: '1/2 teaspoon' },
-      { name: 'Black pepper', amount: '1/4 teaspoon', notes: 'freshly ground' },
-      { name: 'Olive oil', amount: '1 tablespoon' },
-      { name: 'Garlic', amount: '4 cloves', notes: 'minced' },
-      { name: 'Honey', amount: '1/4 cup' },
-      { name: 'Soy sauce', amount: '2 tablespoons', notes: 'use tamari for gluten-free' },
-      { name: 'Lemon juice', amount: '1 tablespoon', notes: 'freshly squeezed' },
-      { name: 'Red pepper flakes', amount: '1/4 teaspoon', notes: 'optional' },
-      { name: 'Fresh parsley', amount: '2 tablespoons', notes: 'chopped, for garnish' },
-      { name: 'Lemon wedges', amount: 'For serving' }
-    ],
-    instructions: [
-      'Pat the salmon fillets dry with paper towels and season both sides with salt and pepper.',
-      'In a small bowl, whisk together garlic, honey, soy sauce, lemon juice, and red pepper flakes (if using).',
-      'Heat olive oil in a large non-stick skillet over medium-high heat.',
-      'Place salmon in the skillet, skin-side down, and cook for 4-5 minutes until the skin is crispy.',
-      'Flip the salmon and cook for another 2 minutes.',
-      'Pour the honey garlic sauce over the salmon, reduce heat to medium-low, and cook for another 1-2 minutes, occasionally spooning the sauce over the salmon.',
-      'Remove from heat when salmon is cooked through and the sauce has thickened slightly.',
-      'Garnish with chopped parsley and serve immediately with lemon wedges and your favorite side dishes.'
-    ],
-    nutritionInfo: {
-      calories: 385,
-      protein: 34,
-      carbs: 14,
-      fat: 22,
-      fiber: 0,
-      sugar: 12
     }
   }
 ];
@@ -329,27 +257,29 @@ export const sortOptions = [
 
 // Helper function to get a recipe by ID
 export const getRecipeById = (id) => {
-  return recipes.find(recipe => recipe.id === id) || null;
+  return recipes.find(recipe => recipe.id === id);
 };
 
-// Helper function to get recommended recipes based on a recipe
-export const getRecommendedRecipes = (currentRecipeId, limit = 3) => {
-  const currentRecipe = getRecipeById(currentRecipeId);
+// Get recommended recipes based on shared tags or dietary preferences
+export const getRecommendedRecipes = (currentRecipe, limit = 3) => {
   if (!currentRecipe) return [];
   
-  // Filter recipes that share at least one tag or dietary preference with current recipe
-  // but exclude the current recipe itself
-  const recommendedRecipes = recipes.filter(recipe => {
-    if (recipe.id === currentRecipeId) return false;
-    
-    const sharedTags = recipe.tags.some(tag => currentRecipe.tags.includes(tag));
-    const sharedDiet = recipe.dietaryPreferences.some(diet => 
-      currentRecipe.dietaryPreferences.includes(diet)
-    );
-    
-    return sharedTags || sharedDiet;
-  });
+  const { id, tags, dietaryPreferences } = currentRecipe;
   
-  // Slice to get the requested number of recipes
-  return recommendedRecipes.slice(0, limit);
+  // Filter out the current recipe and sort by relevance (number of matching tags/preferences)
+  return recipes
+    .filter(recipe => recipe.id !== id)
+    .map(recipe => {
+      const matchingTags = tags?.filter(tag => recipe.tags?.includes(tag)).length || 0;
+      const matchingPreferences = dietaryPreferences?.filter(pref => 
+        recipe.dietaryPreferences?.includes(pref)
+      ).length || 0;
+      
+      return {
+        ...recipe,
+        relevance: matchingTags * 2 + matchingPreferences // Tags are weighted more
+      };
+    })
+    .sort((a, b) => b.relevance - a.relevance)
+    .slice(0, limit);
 }; 

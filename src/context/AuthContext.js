@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // Create the auth context
 const AuthContext = createContext();
@@ -9,8 +9,9 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// Provider component that wraps the app and makes auth object available to any child component that calls useAuth()
-export const AuthProvider = ({ children }) => {
+// Internal provider that uses navigation hooks
+// This component must be used inside Router context
+const AuthProviderWithNavigate = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -153,6 +154,16 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={value}>
       {!loading && children}
     </AuthContext.Provider>
+  );
+};
+
+// Export a version that doesn't directly use Router hooks
+// This is the component that should be used in App.js
+export const AuthProvider = ({ children }) => {
+  return (
+    <AuthProviderWithNavigate>
+      {children}
+    </AuthProviderWithNavigate>
   );
 };
 

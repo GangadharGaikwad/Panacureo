@@ -128,12 +128,22 @@ const Footer = () => {
           pt={6}
           fontSize="sm"
         >
-          <Text>
-            &copy; {year} Panacureo Health Platform. All rights reserved.
-          </Text>
-          <Text mt={{ base: 4, md: 0 }}>
-            Made with <Icon as={FaHeart} color="accent.400" mx={1} /> for a healthier world
-          </Text>
+          <Box>
+            <Text>
+              &copy; {year} Panacureo Health Platform. All rights reserved.
+            </Text>
+            <Text mt={1} fontStyle="italic" color="gray.500">
+              This is a demo platform created for a hackathon and is not intended for real medical use.
+            </Text>
+          </Box>
+          <Stack spacing={2} mt={{ base: 4, md: 0 }} align={{ base: 'flex-start', md: 'flex-end' }}>
+            <Text>
+              Made with <Icon as={FaHeart} color="accent.400" mx={1} /> for a healthier world
+            </Text>
+            <Text fontWeight="medium" color="brand.500">
+              Designed & Developed by Gangadhar Gaikwad
+            </Text>
+          </Stack>
         </Flex>
       </Container>
     </Box>

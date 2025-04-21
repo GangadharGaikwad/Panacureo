@@ -1,3 +1,10 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap location
+Sitemap: https://panacureo.example.com/sitemap.xml
+
+# Disallow access to specific areas 
+Disallow: /dashboard/
+Disallow: /profile/

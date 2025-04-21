@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { ChakraProvider, Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import './App.css';
 import './styles/global.css';
@@ -21,146 +21,159 @@ import SavedRecipes from './pages/SavedRecipes';
 import DiseaseLibrary from './pages/DiseaseLibrary';
 import DiseaseDetail from './pages/DiseaseDetail';
 import HealthGoalsPage from './pages/HealthGoalsPage';
+import Logout from './pages/Logout';
 import theme from './theme';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import { GlobalProvider } from './context/GlobalContext';
+import SearchModal from './components/SearchModal';
+
+// Create a PageLayout component to add consistent spacing
+const PageLayout = ({ children }) => {
+  return (
+    <Box pt={{ base: "100px", md: "120px" }} pb="50px">
+      {children}
+    </Box>
+  );
+};
 
 const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Router>
-        <AuthProvider>
-          <AppContent />
-        </AuthProvider>
-      </Router>
+      <BrowserRouter>
+        <GlobalProvider>
+          <AuthProvider>
+            <Header />
+            <SearchModal />
+            <Box minH="100vh">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route 
+                  path="/dashboard" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/tests" 
+                  element={<Navigate to="/health-tests" replace />} 
+                />
+                <Route 
+                  path="/health-tests" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <HealthTests />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/health-tests/:id" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <TestDetail />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/health-goals" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <HealthGoalsPage />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/recipes" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <RecipesDatabase />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/recipes/:id" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <RecipeDetail />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/saved-recipes" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <SavedRecipes />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/disease-library" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <DiseaseLibrary />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/disease-library/:id" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <DiseaseDetail />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/disease-library/category/:category" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <DiseaseLibrary />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route 
+                  path="/profile" 
+                  element={
+                    <PageLayout>
+                      <ProtectedRoute>
+                        <Profile />
+                      </ProtectedRoute>
+                    </PageLayout>
+                  } 
+                />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Box>
+            <Footer />
+          </AuthProvider>
+        </GlobalProvider>
+      </BrowserRouter>
     </ChakraProvider>
-  );
-};
-
-const AppContent = () => {
-  const bgColor = useColorModeValue('gray.50', 'gray.900');
-  const location = useLocation();
-  
-  // Check if we're on an auth page
-  const isAuthPage = ['/signin', '/signup', '/forgot-password'].includes(location.pathname);
-  
-  return (
-    <Box minH="100vh" bg={bgColor}>
-      <Flex direction="column" minH="100vh">
-        {/* Only show header on non-auth pages */}
-        {!isAuthPage && <Header />}
-        
-        {/* Main content */}
-        <Box flex="1">
-          <Routes>
-            {/* Public routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/tests" element={<Tests />} />
-            <Route path="/health-tests" element={<HealthTests />} />
-            <Route path="/test/:testId" element={<TestDetail />} />
-            <Route path="/recipes" element={<RecipesDatabase />} />
-            <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
-            <Route path="/saved-recipes" element={<SavedRecipes />} />
-            
-            {/* Disease Library Routes */}
-            <Route path="/disease-library" element={<DiseaseLibrary />} />
-            <Route path="/disease-library/category/:categoryId" element={<DiseaseLibrary />} />
-            <Route path="/disease-library/disease/:diseaseId" element={<DiseaseDetail />} />
-            
-            {/* Protected routes */}
-            <Route 
-              path="/dashboard" 
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/profile" 
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/health-tests" 
-              element={
-                <ProtectedRoute>
-                  <HealthTests />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/health-tests/:testId" 
-              element={
-                <ProtectedRoute>
-                  <TestDetail />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/recipes" 
-              element={
-                <ProtectedRoute>
-                  <RecipesDatabase />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/recipes/:recipeId" 
-              element={
-                <ProtectedRoute>
-                  <RecipeDetail />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/saved-recipes" 
-              element={
-                <ProtectedRoute>
-                  <SavedRecipes />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/disease-library" 
-              element={
-                <ProtectedRoute>
-                  <DiseaseLibrary />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/disease-library/:diseaseId" 
-              element={
-                <ProtectedRoute>
-                  <DiseaseDetail />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/health-goals" 
-              element={
-                <ProtectedRoute>
-                  <HealthGoalsPage />
-                </ProtectedRoute>
-              } 
-            />
-            
-            {/* Catch-all route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Box>
-        
-        {/* Only show footer on non-auth pages */}
-        {!isAuthPage && <Footer />}
-      </Flex>
-    </Box>
   );
 };
 

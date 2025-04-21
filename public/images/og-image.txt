@@ -1,0 +1,10 @@
+This file is a placeholder for the og-image.png that should be created.
+
+Recommended specifications for og-image.png:
+- Size: 1200px x 630px
+- Format: PNG or JPG
+- Content: Include the Panacureo logo, app name, and tagline "Your Health Journey Starts Here"
+- Use the brand color (#38A169) as the main accent color
+- Make sure text is large enough to be readable when the image is displayed small
+
+Create this image and place it at: /public/og-image.png 

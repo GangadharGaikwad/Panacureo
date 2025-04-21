@@ -21,6 +21,7 @@ import {
 import { SearchIcon, TimeIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { healthTests, categories, difficulties } from '../data/healthTests';
+import { getOptimizedImageUrl, getPlaceholderImage, getUnsplashImageForCategory, generateFallbackImage } from '../utils/imageUtils';
 
 const HealthTests = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,7 +46,7 @@ const HealthTests = () => {
       result = result.filter(test => 
         test.title.toLowerCase().includes(term) || 
         test.description.toLowerCase().includes(term) ||
-        test.tags.some(tag => tag.toLowerCase().includes(term))
+        test.tags?.some(tag => tag.toLowerCase().includes(term))
       );
     }
     
@@ -64,7 +65,7 @@ const HealthTests = () => {
   
   // Handle card click
   const handleTestClick = (id) => {
-    navigate(`/test/${id}`);
+    navigate(`/health-tests/${id}`);
   };
   
   // Get difficulty badge color
@@ -89,7 +90,7 @@ const HealthTests = () => {
         </Heading>
         <Button
           as={RouterLink}
-          to="/tests"
+          to="/health-tests"
           colorScheme="brand"
           variant="outline"
           rightIcon={<ChevronRightIcon />}
@@ -221,8 +222,21 @@ const TestCard = ({ test, onClick, cardBg, textColor, borderColor, getDifficulty
     icon, 
     category, 
     difficulty, 
-    imageUrl 
+    imageUrl, 
+    image 
   } = test;
+  
+  // Use Unsplash image or the provided imageUrl or fallback
+  const unsplashImage = getUnsplashImageForCategory(category, 'test', 800, 600);
+  const fallbackImage = generateFallbackImage(title, 'test');
+  
+  const [imageSrc, setImageSrc] = useState(image || imageUrl || unsplashImage || fallbackImage);
+  
+  const handleImageError = () => {
+    if (imageSrc !== fallbackImage) {
+      setImageSrc(fallbackImage);
+    }
+  };
   
   return (
     <Box 
@@ -243,11 +257,12 @@ const TestCard = ({ test, onClick, cardBg, textColor, borderColor, getDifficulty
     >
       <Box height="180px" position="relative">
         <Image 
-          src={imageUrl} 
+          src={imageSrc}
           alt={title}
           objectFit="cover"
           width="100%"
           height="100%"
+          onError={handleImageError}
         />
         <Badge 
           position="absolute" 

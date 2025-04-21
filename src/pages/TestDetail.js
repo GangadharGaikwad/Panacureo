@@ -111,7 +111,7 @@ const TestDetail = () => {
         <Container maxW="container.xl" textAlign="center">
           <Heading mb={4}>Error</Heading>
           <Text mb={6}>{error}</Text>
-          <Button as={RouterLink} to="/tests" colorScheme="brand">
+          <Button as={RouterLink} to="/health-tests" colorScheme="brand">
             Return to Tests
           </Button>
         </Container>
@@ -125,7 +125,7 @@ const TestDetail = () => {
         <Container maxW="container.xl" textAlign="center">
           <Heading mb={4}>Test Not Found</Heading>
           <Text mb={6}>The test you're looking for might have been removed or doesn't exist.</Text>
-          <Button as={RouterLink} to="/tests" colorScheme="brand">
+          <Button as={RouterLink} to="/health-tests" colorScheme="brand">
             Browse Available Tests
           </Button>
         </Container>
@@ -141,7 +141,7 @@ const TestDetail = () => {
             <BreadcrumbLink as={RouterLink} to="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <BreadcrumbLink as={RouterLink} to="/tests">Health Tests</BreadcrumbLink>
+            <BreadcrumbLink as={RouterLink} to="/health-tests">Health Tests</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem isCurrentPage>
             <BreadcrumbLink>{test.title}</BreadcrumbLink>
