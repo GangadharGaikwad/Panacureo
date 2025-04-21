@@ -21,6 +21,7 @@ import {
   Badge,
   Checkbox
 } from '@chakra-ui/react';
+import HealthGoals from '../components/HealthGoals';
 
 const Profile = () => {
   return (
@@ -107,6 +108,11 @@ const Profile = () => {
                   <Button colorScheme="teal" alignSelf="flex-end" mt={4}>
                     Update Health Data
                   </Button>
+                  
+                  <Divider my={6} />
+                  
+                  <Heading size="md" mb={4}>Health Goals</Heading>
+                  <HealthGoals />
                 </VStack>
               </TabPanel>
 
@@ -135,4 +141,4 @@ const Profile = () => {
   );
 };
 
-export default Profile; 
+export default Profile;

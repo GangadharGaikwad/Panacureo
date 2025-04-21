@@ -12,16 +12,27 @@ import {
   StatArrow,
   Flex,
   Icon,
-  useColorModeValue
+  useColorModeValue,
+  Button,
+  Grid,
+  GridItem
 } from '@chakra-ui/react';
-import { FaHeartbeat, FaRunning, FaAppleAlt, FaBed } from 'react-icons/fa';
+import { FaHeartbeat, FaRunning, FaAppleAlt, FaBed, FaUtensils, FaClipboardList, FaChartLine, FaCalendarAlt, FaVirus } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import HealthGoals from '../components/HealthGoals';
 
 const Dashboard = () => {
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
   const cardBg = useColorModeValue('white', 'gray.700');
   const textColor = useColorModeValue('gray.600', 'gray.300');
   const statCardBg = useColorModeValue('brand.50', 'gray.800');
+  
+  // Function to handle navigation
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
   
   return (
     <Container maxW="1200px" py={8}>
@@ -74,16 +85,71 @@ const Dashboard = () => {
         />
       </SimpleGrid>
       
-      {/* Placeholder for future content */}
-      <Box p={8} bg={cardBg} borderRadius="lg" boxShadow="md">
-        <Heading as="h2" size="md" mb={4}>
-          Your Health Dashboard
-        </Heading>
-        <Text>
-          This dashboard will be populated with your personal health data and insights.
-          For now, you can explore the various features of Panacureo to get familiar with the platform.
-        </Text>
-      </Box>
+      {/* Dashboard Quick Access Buttons */}
+      <Heading as="h2" size="lg" mb={4}>
+        Quick Actions
+      </Heading>
+      
+      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(4, 1fr)" }} gap={6} mb={8}>
+        <GridItem>
+          <Button
+            leftIcon={<Icon as={FaUtensils} />}
+            colorScheme="brand"
+            variant="solid"
+            size="lg"
+            height="100px"
+            width="100%"
+            onClick={() => handleNavigation('/recipes')}
+          >
+            Recipe Database
+          </Button>
+        </GridItem>
+        
+        <GridItem>
+          <Button
+            leftIcon={<Icon as={FaClipboardList} />}
+            colorScheme="blue"
+            variant="solid"
+            size="lg"
+            height="100px"
+            width="100%"
+            onClick={() => handleNavigation('/health-tests')}
+          >
+            Health Tests
+          </Button>
+        </GridItem>
+        
+        <GridItem>
+          <Button
+            leftIcon={<Icon as={FaVirus} />}
+            colorScheme="purple"
+            variant="solid"
+            size="lg"
+            height="100px"
+            width="100%"
+            onClick={() => handleNavigation('/disease-library')}
+          >
+            Disease Library
+          </Button>
+        </GridItem>
+        
+        <GridItem>
+          <Button
+            leftIcon={<Icon as={FaChartLine} />}
+            colorScheme="teal"
+            variant="solid"
+            size="lg"
+            height="100px"
+            width="100%"
+            onClick={() => handleNavigation('/profile')}
+          >
+            Health Progress
+          </Button>
+        </GridItem>
+      </Grid>
+      
+      {/* Health Goals Component */}
+      <HealthGoals />
     </Container>
   );
 };
