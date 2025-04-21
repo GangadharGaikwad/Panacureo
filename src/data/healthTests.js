@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-unused-vars
+// We need these icons for future implementation, disabling eslint warnings
+/* eslint-disable no-unused-vars */
 import { 
   FaWeight, 
   FaBrain, 
@@ -13,6 +14,7 @@ import {
   FaEye,
   FaChild
 } from 'react-icons/fa';
+/* eslint-enable no-unused-vars */
 
 /**
  * Dummy data for health tests
