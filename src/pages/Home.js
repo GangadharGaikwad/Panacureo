@@ -21,7 +21,7 @@ import {
   HStack
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { FaFlask, FaUtensils, FaVirus, FaChartLine, FaArrowRight } from 'react-icons/fa';
+import { FaFlask, FaUtensils, FaVirus, FaChartLine, FaArrowRight, FaHeart, FaShieldAlt } from 'react-icons/fa';
 import { CheckIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -212,6 +212,144 @@ const Home = () => {
               ))}
             </SimpleGrid>
           </MotionBox>
+        </Container>
+      </Box>
+
+      {/* Recipe Feature Section */}
+      <Box as="section" py={20} bg={useColorModeValue('gray.50', 'gray.900')}>
+        <Container maxW="1200px">
+          <Flex
+            direction={{ base: "column", lg: "row" }}
+            align="center"
+            justify="space-between"
+            gap={10}
+          >
+            <Box maxW={{ lg: "50%" }}>
+              <Heading
+                as="h2"
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                mb={5}
+              >
+                Discover Healthy <Text as="span" color="brand.500">Recipes</Text> for Your Well-being
+              </Heading>
+              
+              <Text fontSize="lg" color={useColorModeValue("gray.600", "gray.400")} mb={8}>
+                Explore our collection of nutritious recipes tailored to support your health journey. Save your favorites, plan your meals, and enjoy the benefits of healthy eating.
+              </Text>
+              
+              <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+                <Button
+                  as={RouterLink}
+                  to="/recipes"
+                  size="lg"
+                  colorScheme="brand"
+                  leftIcon={<FaUtensils />}
+                  fontWeight="bold"
+                >
+                  Browse Recipes
+                </Button>
+                
+                <Button
+                  as={RouterLink}
+                  to="/saved-recipes"
+                  size="lg"
+                  variant="outline"
+                  colorScheme="brand"
+                  leftIcon={<FaHeart />}
+                  fontWeight="bold"
+                >
+                  Saved Recipes
+                </Button>
+              </Stack>
+            </Box>
+            
+            <Box
+              maxW={{ lg: "50%" }}
+              rounded="lg"
+              shadow="xl"
+              overflow="hidden"
+              position="relative"
+            >
+              <Image
+                src="/images/recipes/healthy-meals.jpg"
+                alt="Healthy meals"
+                w="full"
+                h="full"
+                objectFit="cover"
+                fallbackSrc="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              />
+            </Box>
+          </Flex>
+        </Container>
+      </Box>
+
+      {/* Disease Library Section */}
+      <Box as="section" py={20} bg={useColorModeValue('white', 'gray.800')}>
+        <Container maxW="1200px">
+          <Flex
+            direction={{ base: "column", lg: "row-reverse" }}
+            align="center"
+            justify="space-between"
+            gap={10}
+          >
+            <Box maxW={{ lg: "50%" }}>
+              <Heading
+                as="h2"
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                mb={5}
+              >
+                Comprehensive <Text as="span" color="brand.500">Disease Information</Text> at Your Fingertips
+              </Heading>
+              
+              <Text fontSize="lg" color={useColorModeValue("gray.600", "gray.400")} mb={8}>
+                Access our extensive library of medical information covering symptoms, causes, prevention, and treatments for a wide range of health conditions.
+              </Text>
+              
+              <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+                <Button
+                  as={RouterLink}
+                  to="/disease-library"
+                  size="lg"
+                  colorScheme="brand"
+                  leftIcon={<FaVirus />}
+                  fontWeight="bold"
+                >
+                  Explore Disease Library
+                </Button>
+                
+                <Button
+                  as={RouterLink}
+                  to="/disease-library/category/infectious"
+                  size="lg"
+                  variant="outline"
+                  colorScheme="brand"
+                  leftIcon={<FaShieldAlt />}
+                  fontWeight="bold"
+                >
+                  Infectious Diseases
+                </Button>
+              </Stack>
+            </Box>
+            
+            <Box
+              maxW={{ lg: "50%" }}
+              rounded="lg"
+              shadow="xl"
+              overflow="hidden"
+              position="relative"
+            >
+              <Image
+                src="/images/diseases/medical-research.jpg"
+                alt="Disease research"
+                w="full"
+                h="full"
+                objectFit="cover"
+                fallbackSrc="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              />
+            </Box>
+          </Flex>
         </Container>
       </Box>
 
